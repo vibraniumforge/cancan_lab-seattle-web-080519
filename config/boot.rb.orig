@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
+=======
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+>>>>>>> Readme and skeleton.
+
+require 'bundler/setup' # Set up gems listed in the Gemfile.

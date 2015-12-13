@@ -1,0 +1,9 @@
+# Load the Rails application.
+<<<<<<< HEAD
+require_relative 'application'
+=======
+require File.expand_path('../application', __FILE__)
+>>>>>>> Readme and skeleton.
+
+# Initialize the Rails application.
+Rails.application.initialize!
