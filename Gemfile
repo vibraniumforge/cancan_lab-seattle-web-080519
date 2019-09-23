@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# Avoid https://github.com/learn-co-curriculum/cancan_lab/network/alert/Gemfile.lock/nokogiri/open
+# CVE-2019-5477
+gem "nokogiri", ">= 1.10.4"
+
 gem 'cancancan'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
