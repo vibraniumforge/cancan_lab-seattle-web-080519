@@ -65,7 +65,7 @@ authorization model for this example will be a message board for secret notes.
       # TODO
     end
 ```
-   to resolve the TODO, think about the following facts
+7. To resolve the TODO, think about the following facts
      * CanCanCan gives you a `user` variable that's "visible" inside the `can`
        block
      * Inside the block you have access to a `note` variable
