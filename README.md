@@ -29,24 +29,28 @@ authorization model for this example will be a message board for secret notes.
      foreign keys (`user_id`, `note_id`) as `Integer` attributes
 4. Boilerplate code. This lab has certain assumptions, the following should be
    put into your model definitions
+   
 ```ruby
    # user.rb
    has_many :viewers
    has_many :readable, through: :viewers, source: :note
 
    # note.rb
+   belongs_to :user
    has_many :viewers
    has_many :readers, through: :viewers, source: :user
 ```
+
 5. When we create a new note, we'll want a form that takes in a comma-separated
    list of usernames which represent who that note is visible to. To make
    certain operations easier, we want to create two utility methods:
+
    *  `visible_to`
      * Takes no arguments
      * Returns the readers' `name` `String`s, joined by a comma (with no space!)
    * `visible_to=(comma_string)`
      * Takes one argument, a `String`, joined by a comma (with **possible** spaces!)
-     * Assings readers based on finding the `User`s whose names match the names
+     * Assigns readers based on finding the `User`s whose names match the names
        extracted from `comma_string`.
      * Returns the readers' `name` `String`s, joined by a comma (with no space!)
 6. You should  use the same principles of mass assignment to transfer
@@ -60,11 +64,13 @@ authorization model for this example will be a message board for secret notes.
    * The rules are a little bit tricky because you have to look through an
      association to figure out if a user can read a note. You'll want to use a
      block condition, like this:
+
 ```ruby
     can :read, Note do |note|
       # TODO
     end
 ```
+
 7. To resolve the TODO, think about the following facts
      * CanCanCan gives you a `user` variable that's "visible" inside the `can`
        block
@@ -73,12 +79,12 @@ authorization model for this example will be a message board for secret notes.
        or methods are present that will help you determine whether the `User`
        should read the `Note`? You can use enumerables or loops to return a `truthy`
        value which tells Rails "permission granted."
-     
 
 ## Resources
-[Sitepoint - CanCanCan: The Rails Authorization Dance](http://www.sitepoint.com/cancancan-rails-authorization-dance/)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/cancan_lab'>Cancan Lab</a> on Learn.co and start learning to code for free.</p>
+[Sitepoint - CanCanCan: The Rails Authorization Dance](http://www.sitepoint.com/cancancan-rails-authorization-dance/)
 
 [CanCanCan]: https://github.com/CanCanCommunity/cancancan
 [defining_abilities]: https://github.com/CanCanCommunity/cancancan/wiki/defining-abilities
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/cancan_lab'>Cancan Lab</a> on Learn.co and start learning to code for free.</p>
