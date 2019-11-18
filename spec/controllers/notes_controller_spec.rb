@@ -10,6 +10,7 @@ RSpec.describe NotesController, type: :controller do
     describe "when a user is not logged in" do
       it "returns unauthorized" do
         post :create, params: { note: { content: @content} }
+        puts response.header
         expect(response).to be_unauthorized
       end
     end
