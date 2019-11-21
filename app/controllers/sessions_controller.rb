@@ -1,7 +1,6 @@
 class SessionsController
 
   def create
-    byebug
     if user_is_not_signed_in?
       return head(:unauthorized)
     else
